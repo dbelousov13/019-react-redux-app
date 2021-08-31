@@ -1,9 +1,9 @@
 import logo from './logo.svg'
 import './App.css'
-import ToDoList from './pages/ToDoList'
+import MainToDoList from './pages/MainToDoList'
 
 function App () {
-  return <ToDoList />
+  return <MainToDoList />
 }
 
 export default App
