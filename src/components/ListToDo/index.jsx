@@ -37,8 +37,8 @@ const mapDispatchToProps = dispatch => {
     deleteTaskAction: id => {
       dispatch(deleteTask(id));
     },
-    updateIsDoneStatusAction: newIsDoneInfo => {
-      dispatch(updateIsDoneStatus(newIsDoneInfo));
+    updateIsDoneStatusAction: newTaskStatus => {
+      dispatch(updateIsDoneStatus(newTaskStatus));
     },
   };
 };
