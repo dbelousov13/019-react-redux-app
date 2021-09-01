@@ -27,6 +27,25 @@ const ToDoListReducer = (state = initialState, action) => {
       const newTasks = [...tasks, newTask];
       return { tasks: newTasks };
     }
+    case ACTION_TYPES.DELETE_TASK: {
+      const { tasks } = state;
+      const { id } = action;
+      const newTasks = [...tasks];
+
+      const index = newTasks.findIndex(t => id === t.id);
+      newTasks.splice(index, 1);
+
+      return { tasks: newTasks };
+    }
+    case ACTION_TYPES.UPDATE_IS_DONE_STATUS: {
+      const { tasks } = state;
+      const { newStatus: newTaskStatus } = action;
+      const newTasks = [...tasks];
+      const index = newTasks.findIndex(t => newTaskStatus.id === t.id);
+      newTasks[index] = { ...newTasks[index], ...newTaskStatus };
+
+      return { tasks: newTasks };
+    }
     default:
       return state;
   }

@@ -1,18 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { deleteTask, updateIsDoneStatus } from '../../actions';
 // import users from
 
 function ListToDo (props) {
-  const { tasks } = props;
+  const { tasks, deleteTaskAction, updateIsDoneStatusAction } = props;
 
   const mapTask = ({ id, task, SLADate, isDone }, index) => {
-    const isDoneChangeHandler = () => {};
+    const isDoneChangeHandler = () => {
+      updateIsDoneStatusAction({ id: id, isDone: !isDone });
+    };
 
-    const deleteTask = () => {};
+    const deleteTask = () => {
+      deleteTaskAction(id);
+    };
 
     return (
       <li key={id}>
-        ID:{id}, Task: {task}, Due to: {SLADate}
+        {task}, Due to: {SLADate}
         <input
           type='checkbox'
           checked={isDone}
@@ -25,8 +30,17 @@ function ListToDo (props) {
   return <ul>{tasks.map(mapTask)}</ul>;
 }
 
-const mapStateToProps = state => state.taskState;
+const mapStateToProps = state => state.tasksState;
 
-const mapDispatchToProps = () => {};
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteTaskAction: id => {
+      dispatch(deleteTask(id));
+    },
+    updateIsDoneStatusAction: newIsDoneInfo => {
+      dispatch(updateIsDoneStatus(newIsDoneInfo));
+    },
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListToDo);
