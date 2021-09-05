@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { connect } from 'react-redux';
 import { createTask } from '../../actions';
+import styles from '../InputToDoForm/InputToDo.module.scss';
 
 function InputToDoForm (props) {
   const { createTaskAction } = props;
@@ -18,18 +19,20 @@ function InputToDoForm (props) {
   };
 
   return (
-    <Formik initialValues={initialToDoValues} onSubmit={submitHandler}>
-      {formikProps => {
-        return (
-          <Form>
-            <Field name='task' />
-            <Field name='SLADate' />
-            <Field type='checkbox' name='isDone' />
-            <button type='submit'>Add task</button>
-          </Form>
-        );
-      }}
-    </Formik>
+    <div>
+      <Formik initialValues={initialToDoValues} onSubmit={submitHandler}>
+        {formikProps => {
+          return (
+            <Form>
+              <Field name='task' />
+              <Field type='date' name='SLADate' />
+              {/* <Field type='checkbox' name='isDone' /> */}
+              <button type='submit'>Add task</button>
+            </Form>
+          );
+        }}
+      </Formik>
+    </div>
   );
 }
 
