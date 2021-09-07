@@ -19,7 +19,7 @@ function UsersSagaList (props) {
       <li key={id}>
         ID: {id} name: {name} tel.: {telNumber}
         <input type='checkbox' checked={isBanned} />
-        <button onClick={deleteHandler}>Delete</button>
+        <button onClick={deleteHandler}>Delete user</button>
       </li>
     );
   };

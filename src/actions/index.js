@@ -75,7 +75,6 @@ export const deleteUserAction = id => ({
 export const deleteUserRequest = () => ({
   type: ACTION_TYPES.DELETE_USER_REQUEST,
 });
-
 export const deleteUserSuccess = deletedUser => ({
   type: ACTION_TYPES.DELETE_USER_SUCCESS,
   deletedUser,
@@ -86,6 +85,7 @@ export const deleteUserError = e => ({
   error: e,
 });
 
+//task list
 export const createTask = newTaskData => {
   return {
     type: ACTION_TYPES.CREATE_TASK,
